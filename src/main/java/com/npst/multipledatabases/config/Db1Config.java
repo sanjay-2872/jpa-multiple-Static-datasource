@@ -21,13 +21,13 @@ import javax.sql.DataSource;
 public class Db1Config {
 
     @Bean
-    @ConfigurationProperties("spring.datasource")
+    @ConfigurationProperties("spring.datasource1")
     public DataSourceProperties cardDataSourceProperties() {
         return new DataSourceProperties();
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource")
+    @ConfigurationProperties("spring.datasource1")
     public DataSource cardDataSource() {
         return cardDataSourceProperties().initializeDataSourceBuilder()
                 .type(HikariDataSource.class).build();
