@@ -1,6 +1,8 @@
 package com.npst.multipledatabases.service;
 
 
+import com.npst.multipledatabases.dto.BookingDto;
+import com.npst.multipledatabases.mapper.BookingMapper;
 import com.npst.multipledatabases.repo.db2.Booking2Repo;
 import com.npst.multipledatabases.model.db1.Booking;
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -41,5 +44,20 @@ public class BookingSevice {
         log.info("Added Repo 1 Booking Data to response :: {}", response);
 
        return response;
+    }
+
+    public boolean addBookDetails(BookingDto bookingDto) {
+        Long id = null;
+        try{
+            Booking booking = BookingMapper.INSTANCE.mapBookingEntity(bookingDto);
+            //time Comple for ob MAPPER VS AND MODEL MAPPER
+            log.info("booking Entity :: {}, Amount Check :: {}",booking,Objects.nonNull(booking.getBookingAmount()));
+            if(Objects.nonNull(booking.getBookingAmount())){
+                id =  bookingRepo.save(booking).getId();
+            }
+        }catch (Exception e){
+            log.info("Exception at Add Booking Details :: {}",e.getMessage(), e);
+        }
+        return Objects.nonNull(id);
     }
 }

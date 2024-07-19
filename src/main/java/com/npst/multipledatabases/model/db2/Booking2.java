@@ -2,8 +2,16 @@ package com.npst.multipledatabases.model.db2;
 
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.GenerationType;
+
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 
 @Data
@@ -27,4 +35,10 @@ public class Booking2 {
 
     @Column(name = "booking_amount")
     private String bookingAmount;
+
+    @Column(name = "email_address")
+    private String emailAddress;
+
+    @Column(name = "drop_data")
+    private LocalDateTime dropData;
 }

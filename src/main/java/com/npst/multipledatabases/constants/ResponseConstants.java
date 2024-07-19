@@ -12,7 +12,8 @@ public enum ResponseConstants {
 
     SUCCESS_OK("SUCCESS",  00),
     SUCCESS_CREATED("SUCCESS",  00),
-    FAILURE("Failure",  01);
+    FAILURE("Failure",  01),
+    BAD_REQUEST("BAD_REQUEST",  11);
 
     private final String respMsg;
     private final int respCode;

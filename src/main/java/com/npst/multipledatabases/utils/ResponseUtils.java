@@ -5,6 +5,9 @@ import com.npst.multipledatabases.dto.ResponseMessage;
 
 public class ResponseUtils {
 
+    private ResponseUtils(){
+    }
+
     public static ResponseMessage successResponseMsg(ResponseConstants responseConstants, Object respMsg){
         return ResponseMessage.builder()
                 .respCode(responseConstants.getRespCode())
